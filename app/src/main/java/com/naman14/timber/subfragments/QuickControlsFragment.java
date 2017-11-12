@@ -22,7 +22,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +32,8 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.afollestad.appthemeengine.Config;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.naman14.timber.MusicPlayer;
 import com.naman14.timber.R;
 import com.naman14.timber.activities.BaseActivity;
@@ -58,6 +59,7 @@ public class QuickControlsFragment extends Fragment implements MusicStateListene
     private ProgressBar mProgress;
     private SeekBar mSeekBar;
     int overflowcounter = 0;
+    private AdView adView;
     public Runnable mUpdateProgress = new Runnable() {
 
         @Override
@@ -136,6 +138,8 @@ public class QuickControlsFragment extends Fragment implements MusicStateListene
         View rootView = inflater.inflate(R.layout.fragment_playback_controls, container, false);
         this.rootView = rootView;
 
+        adView = rootView.findViewById(R.id.adView);
+        loadAd(adView);
         mPlayPause = (PlayPauseButton) rootView.findViewById(R.id.play_pause);
         mPlayPauseExpanded = (PlayPauseButton) rootView.findViewById(R.id.playpause);
         playPauseWrapper = rootView.findViewById(R.id.play_pause_wrapper);
@@ -221,6 +225,11 @@ public class QuickControlsFragment extends Fragment implements MusicStateListene
 
 
         return rootView;
+    }
+
+    private void loadAd(AdView adView) {
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
     }
 
     @Override
