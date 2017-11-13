@@ -35,7 +35,8 @@ import com.topratedapps.musicplayer.subfragments.StyleSelectorFragment;
 import com.topratedapps.musicplayer.utils.Constants;
 import com.topratedapps.musicplayer.utils.PreferencesUtility;
 
-public class SettingsActivity extends BaseThemedActivity implements ColorChooserDialog.ColorCallback, ATEActivityThemeCustomizer {
+public class SettingsActivity extends BaseThemedActivity implements ColorChooserDialog.ColorCallback,
+        ATEActivityThemeCustomizer {
 
     String action;
 

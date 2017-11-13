@@ -43,6 +43,7 @@ import com.topratedapps.musicplayer.fragments.FoldersFragment;
 import com.topratedapps.musicplayer.fragments.MainFragment;
 import com.topratedapps.musicplayer.fragments.PlaylistFragment;
 import com.topratedapps.musicplayer.fragments.QueueFragment;
+import com.topratedapps.musicplayer.helpers.BillingHelper;
 import com.topratedapps.musicplayer.permissions.Nammu;
 import com.topratedapps.musicplayer.permissions.PermissionCallback;
 import com.topratedapps.musicplayer.slidinguppanel.SlidingUpPanelLayout;
@@ -157,6 +158,8 @@ public class MainActivity extends BaseActivity implements ATEActivityThemeCustom
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        BillingHelper.getInstance(this, null);
 
         navigationMap.put(Constants.NAVIGATE_LIBRARY, navigateLibrary);
         navigationMap.put(Constants.NAVIGATE_PLAYLIST, navigatePlaylist);

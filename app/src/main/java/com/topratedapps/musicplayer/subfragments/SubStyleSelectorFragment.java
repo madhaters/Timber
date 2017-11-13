@@ -27,11 +27,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.topratedapps.musicplayer.R;
+import com.topratedapps.musicplayer.helpers.BillingHelper;
 import com.topratedapps.musicplayer.utils.Constants;
 import com.topratedapps.musicplayer.utils.NavigationUtils;
 import com.topratedapps.musicplayer.utils.PreferencesUtility;
 
-public class SubStyleSelectorFragment extends Fragment {
+public class SubStyleSelectorFragment extends Fragment implements BillingHelper.BillingListener {
 
     private static final String ARG_PAGE_NUMBER = "pageNumber";
     private static final String WHAT = "what";
@@ -69,6 +70,10 @@ public class SubStyleSelectorFragment extends Fragment {
                     if (isUnlocked()) {
                         setPreferences();
                     } else {
+                        //open buy dialog
+                        BillingHelper.getInstance(getActivity(), SubStyleSelectorFragment.this)
+                                .makePurchase(getActivity(), BillingHelper.SKIN_SKU_ID, SubStyleSelectorFragment.this);
+
                     }
                 } else
                     setPreferences();
@@ -172,4 +177,21 @@ public class SubStyleSelectorFragment extends Fragment {
     }
 
 
+    @Override
+    public void billingInitialized() {
+
+    }
+
+    @Override
+    public void errorInPurchase() {
+
+    }
+
+    @Override
+    public void purchaseSuccessful(String skuId) {
+        if (BillingHelper.SKIN_SKU_ID.equals(skuId)) {
+            PreferencesUtility.getInstance(getActivity()).setFullUnlocked(true);
+            setPreferences();
+        }
+    }
 }
