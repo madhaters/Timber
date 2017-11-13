@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <string name="app_name">Timber</string>
+    <string name="app_name">Music Player</string>
     <string name="action_settings">设置</string>
 
     <string name="accessibility_play">播放</string>
@@ -79,7 +79,7 @@
     <string name="personalisation">个性化</string>
     <string name="other">其他</string>
     <string name="advanced">高级</string>
-    <string name="timber_about_opensource">Timber 是 Naman Dwivedi 开发的一款开源的音乐播放器</string>
+    <string name="timber_about_opensource">Music Player 是 Naman Dwivedi 开发的一款开源的音乐播放器</string>
     <string name="summary_pause_detach">当耳机拔出时暂停播放</string>
     <string name="pause_detach">拔出时暂停</string>
     <string name="summary_xposed_trackselector">需要安装 Xposed 和 Xposed 模块 XMediaNotificationTrackSelector。这将在通知中提供播放队列控制。</string>
@@ -112,10 +112,10 @@
 
     <string name="gestures">手势</string>
     <string name="switching_tracks_by_gestures">使用手势切换曲目</string>
-    <string name="widget_standard">Timber 标准</string>
-    <string name="widget_small">Timber 小</string>
-    <string name="tap_to_start">单击打开 Timber</string>
-    <string name="widget_white">Timber 亮</string>
+    <string name="widget_standard">Music Player 标准</string>
+    <string name="widget_small">Music Player 小</string>
+    <string name="tap_to_start">单击打开 Music Player</string>
+    <string name="widget_white">Music Player 亮</string>
 
     <string name="count_song"><xliff:g id="count">%d</xliff:g> 首歌曲</string>
     <string name="count_songs"><xliff:g id="count">%d</xliff:g> 首歌曲</string>

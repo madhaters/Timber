@@ -76,7 +76,7 @@
     <string name="now_playing_selector">Choisir un écran de lecture à partir de 4 styles différents</string>
     <string name="personalisation">Personnalisation</string>
     <string name="other">Autre</string>
-    <string name="timber_about_opensource">Timber est une application open source développée par Naman Dwivedi.</string>
+    <string name="timber_about_opensource">Music Player est une application open source développée par Naman Dwivedi.</string>
     <string name="summary_pause_detach">Mettre en pause la lecture lorsque le casque est débranché</string>
     <string name="pause_detach">Pause au débranchement</string>
     <string name="currently_selected">Actuellement sélectionné</string>
