@@ -7,7 +7,7 @@
     android:layout_gravity="top"
     android:background="?attr/windowBackground">
 
-    <com.naman14.timber.widgets.SquareImageView
+    <com.topratedapps.musicplayer.widgets.SquareImageView
         android:id="@+id/album_art_nowplayingcard"
         android:layout_width="55dp"
         android:layout_height="55dp"
@@ -66,7 +66,7 @@
         android:layout_marginRight="5dp"
         android:layout_alignParentRight="true">
 
-        <com.naman14.timber.widgets.PlayPauseButton
+        <com.topratedapps.musicplayer.widgets.PlayPauseButton
             android:id="@+id/play_pause"
             android:layout_width="23dp"
             android:layout_height="23dp"
@@ -87,5 +87,5 @@
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
         ads:adSize="BANNER"
-        ads:adUnitId="ca-app-pub-3940256099942544/6300978111"></com.google.android.gms.ads.AdView>
+        ads:adUnitId="ca-app-pub-4440517763038694/1480617845" />
 </RelativeLayout>
