@@ -378,7 +378,7 @@ public class MainActivity extends BaseActivity implements ATEActivityThemeCustom
         }
         ImageLoader.getInstance().displayImage(TimberUtils.getAlbumArtUri(MusicPlayer.getCurrentAlbumId()).toString(), albumart,
                 new DisplayImageOptions.Builder().cacheInMemory(true)
-                        .showImageOnFail(R.drawable.ic_empty_music2)
+                        .showImageOnFail(R.drawable.app_icon)
                         .resetViewBeforeLoading(true)
                         .build());
     }

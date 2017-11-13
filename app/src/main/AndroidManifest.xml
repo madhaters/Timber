@@ -138,6 +138,9 @@
                 android:resource="@xml/widget_small" />
         </receiver>
 
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="955a985bc59dc987c2d3cd10efab737ba08f3440" />
     </application>
 
 </manifest>
