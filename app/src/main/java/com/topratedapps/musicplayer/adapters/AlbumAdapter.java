@@ -16,7 +16,6 @@ package com.topratedapps.musicplayer.adapters;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
-import android.support.v7.graphics.Palette;
 import android.support.v7.widget.RecyclerView;
 import android.util.Pair;
 import android.view.LayoutInflater;
@@ -25,7 +24,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.afollestad.appthemeengine.Config;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
@@ -33,7 +31,6 @@ import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 import com.topratedapps.musicplayer.R;
 import com.topratedapps.musicplayer.models.Album;
-import com.topratedapps.musicplayer.utils.Helpers;
 import com.topratedapps.musicplayer.utils.NavigationUtils;
 import com.topratedapps.musicplayer.utils.PreferencesUtility;
 import com.topratedapps.musicplayer.utils.TimberUtils;
@@ -71,7 +68,7 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.ItemHolder> 
         Album localItem = arraylist.get(i);
 
         itemHolder.title.setText(localItem.title);
-        itemHolder.artist.setText(localItem.artistName);
+        itemHolder.artist.setText(localItem.year > 0 ? String.valueOf(localItem.year) : localItem.artistName);
 
         ImageLoader.getInstance().displayImage(TimberUtils.getAlbumArtUri(localItem.id).toString(), itemHolder.albumArt,
                 new DisplayImageOptions.Builder().cacheInMemory(true)
@@ -81,45 +78,13 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.ItemHolder> 
                         .build(), new SimpleImageLoadingListener() {
                     @Override
                     public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
-                        if (isGrid) {
-                            new Palette.Builder(loadedImage).generate(new Palette.PaletteAsyncListener() {
-                                @Override
-                                public void onGenerated(Palette palette) {
-                                    Palette.Swatch swatch = palette.getVibrantSwatch();
-                                    if (swatch != null) {
-                                        int color = swatch.getRgb();
-                                        itemHolder.footer.setBackgroundColor(color);
-                                        int textColor = TimberUtils.getBlackWhiteColor(swatch.getTitleTextColor());
-                                        itemHolder.title.setTextColor(textColor);
-                                        itemHolder.artist.setTextColor(textColor);
-                                    } else {
-                                        Palette.Swatch mutedSwatch = palette.getMutedSwatch();
-                                        if (mutedSwatch != null) {
-                                            int color = mutedSwatch.getRgb();
-                                            itemHolder.footer.setBackgroundColor(color);
-                                            int textColor = TimberUtils.getBlackWhiteColor(mutedSwatch.getTitleTextColor());
-                                            itemHolder.title.setTextColor(textColor);
-                                            itemHolder.artist.setTextColor(textColor);
-                                        }
-                                    }
 
-
-                                }
-                            });
-                        }
 
                     }
 
                     @Override
                     public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
-                        if (isGrid) {
-                            itemHolder.footer.setBackgroundColor(0);
-                            if (mContext != null) {
-                                int textColorPrimary = Config.textColorPrimary(mContext, Helpers.getATEKey(mContext));
-                                itemHolder.title.setTextColor(textColorPrimary);
-                                itemHolder.artist.setTextColor(textColorPrimary);
-                            }
-                        }
+
                     }
                 });
 
