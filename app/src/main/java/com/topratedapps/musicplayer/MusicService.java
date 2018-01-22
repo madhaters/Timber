@@ -20,6 +20,8 @@ import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.AlarmManager;
 import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.BroadcastReceiver;
@@ -59,7 +61,6 @@ import android.os.SystemClock;
 import android.provider.MediaStore;
 import android.provider.MediaStore.Audio.AlbumColumns;
 import android.provider.MediaStore.Audio.AudioColumns;
-import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.graphics.Palette;
 import android.text.TextUtils;
 import android.util.Log;
@@ -160,6 +161,8 @@ public class MusicService extends Service {
             "audio._id AS _id", AudioColumns.ALBUM_ID, AudioColumns.TITLE,
             AudioColumns.ARTIST, AudioColumns.DURATION
     };
+    private static final String NOTIFICATION_CHANNEL = "Main";
+
     private static final Shuffler mShuffler = new Shuffler();
     private static final int NOTIFY_MODE_NONE = 0;
     private static final int NOTIFY_MODE_FOREGROUND = 1;
@@ -178,7 +181,7 @@ public class MusicService extends Service {
     private AlarmManager mAlarmManager;
     private PendingIntent mShutdownIntent;
     private boolean mShutdownScheduled;
-    private NotificationManagerCompat mNotificationManager;
+    private NotificationManager mNotificationManager;
     private Cursor mCursor;
     private Cursor mAlbumCursor;
     private AudioManager mAudioManager;
@@ -283,7 +286,7 @@ public class MusicService extends Service {
         if (D) Log.d(TAG, "Creating service");
         super.onCreate();
 
-        mNotificationManager = NotificationManagerCompat.from(this);
+        mNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 
         // gets a pointer to the playback state store
         mPlaybackStateStore = MusicPlaybackState.getInstance(this);
@@ -1264,7 +1267,13 @@ public class MusicService extends Service {
                 .addAction(R.drawable.ic_skip_next_white_36dp,
                         "",
                         retrievePlaybackAction(NEXT_ACTION));
-
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel chan1 = new NotificationChannel(NOTIFICATION_CHANNEL,
+                    NOTIFICATION_CHANNEL, NotificationManager.IMPORTANCE_LOW);
+            chan1.setSound(null, null);
+            mNotificationManager.createNotificationChannel(chan1);
+            builder.setChannelId(NOTIFICATION_CHANNEL);
+        }
         if (TimberUtils.isJellyBeanMR1()) {
             builder.setShowWhen(false);
         }
