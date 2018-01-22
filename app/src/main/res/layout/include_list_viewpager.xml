@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:gravity="bottom"
     sothree:fadeColor="@android:color/transparent"
-    sothree:panelHeight="110dp"
+    sothree:panelHeight="55dp"
     sothree:shadowHeight="5dp">
 
 
