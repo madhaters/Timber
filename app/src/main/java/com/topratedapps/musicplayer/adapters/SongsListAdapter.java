@@ -91,6 +91,8 @@ public class SongsListAdapter extends RecyclerView.Adapter<SongsListAdapter.Item
             if (MusicPlayer.isPlaying()) {
                 itemHolder.visualizer.setColor(Config.accentColor(mContext, ateKey));
                 itemHolder.visualizer.setVisibility(View.VISIBLE);
+            } else {
+                itemHolder.visualizer.setVisibility(View.GONE);
             }
         } else {
             if (isPlaylist)
