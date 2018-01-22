@@ -78,7 +78,7 @@ public class MainFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if (PreferenceManager.getDefaultSharedPreferences(getActivity()).getBoolean("dark_theme", false)) {
+        if (PreferenceManager.getDefaultSharedPreferences(getActivity()).getBoolean("dark_theme", true)) {
             ATE.apply(this, "dark_theme");
         } else {
             ATE.apply(this, "light_theme");

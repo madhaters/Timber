@@ -36,7 +36,7 @@ public class PopupImageView extends ImageView {
     }
 
     private void tint() {
-        if (PreferenceManager.getDefaultSharedPreferences(getContext()).getBoolean("dark_theme", false)) {
+        if (PreferenceManager.getDefaultSharedPreferences(getContext()).getBoolean("dark_theme", true)) {
             TintHelper.setTint(this, Color.parseColor("#eeeeee"));
         } else  TintHelper.setTint(this, Color.parseColor("#434343"));
     }

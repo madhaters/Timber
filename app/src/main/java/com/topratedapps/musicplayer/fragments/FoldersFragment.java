@@ -67,7 +67,7 @@ public class FoldersFragment extends Fragment implements StorageSelectDialog.OnD
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        boolean dark = PreferenceManager.getDefaultSharedPreferences(getActivity()).getBoolean("dark_theme", false);
+        boolean dark = PreferenceManager.getDefaultSharedPreferences(getActivity()).getBoolean("dark_theme", true);
         if (dark) {
             ATE.apply(this, "dark_theme");
         } else {
@@ -108,7 +108,7 @@ public class FoldersFragment extends Fragment implements StorageSelectDialog.OnD
     public void updateTheme() {
         Context context = getActivity();
         if (context != null) {
-            boolean dark = PreferenceManager.getDefaultSharedPreferences(context).getBoolean("dark_theme", false);
+            boolean dark = PreferenceManager.getDefaultSharedPreferences(context).getBoolean("dark_theme", true);
             mAdapter.applyTheme(dark);
         }
     }

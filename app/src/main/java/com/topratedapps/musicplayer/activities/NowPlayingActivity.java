@@ -40,7 +40,7 @@ public class NowPlayingActivity extends BaseActivity implements ATEActivityTheme
     @StyleRes
     @Override
     public int getActivityTheme() {
-        return PreferenceManager.getDefaultSharedPreferences(this).getBoolean("dark_theme", false) ? R.style.AppTheme_FullScreen_Dark : R.style.AppTheme_FullScreen_Light;
+        return PreferenceManager.getDefaultSharedPreferences(this).getBoolean("dark_theme", true) ? R.style.AppTheme_FullScreen_Dark : R.style.AppTheme_FullScreen_Light;
     }
 
     @Override

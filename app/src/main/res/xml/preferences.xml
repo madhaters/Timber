@@ -42,7 +42,7 @@
         <!--android:title="@string/select_theme" />-->
 
         <com.afollestad.appthemeengine.prefs.ATECheckBoxPreference
-            android:defaultValue="false"
+            android:defaultValue="true"
             android:key="dark_theme"
             android:persistent="true"
             android:summary="@string/dark_theme_summary"

@@ -48,7 +48,7 @@ public class Helpers {
     }
 
     public static String getATEKey(Context context) {
-        return PreferenceManager.getDefaultSharedPreferences(context).getBoolean("dark_theme", false) ?
+        return PreferenceManager.getDefaultSharedPreferences(context).getBoolean("dark_theme", true) ?
                 "dark_theme" : "light_theme";
     }
 

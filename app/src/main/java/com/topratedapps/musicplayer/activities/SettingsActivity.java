@@ -89,7 +89,7 @@ public class SettingsActivity extends BaseThemedActivity implements ColorChooser
     @StyleRes
     @Override
     public int getActivityTheme() {
-        return PreferenceManager.getDefaultSharedPreferences(this).getBoolean("dark_theme", false) ?
+        return PreferenceManager.getDefaultSharedPreferences(this).getBoolean("dark_theme", true) ?
                 R.style.AppThemeDark : R.style.AppThemeLight;
     }
 
