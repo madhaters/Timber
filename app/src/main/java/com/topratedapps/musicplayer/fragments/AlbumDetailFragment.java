@@ -26,7 +26,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.graphics.Palette;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -193,51 +192,12 @@ public class AlbumDetailFragment extends Fragment {
 
                     @Override
                     public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
-                        try {
-                            new Palette.Builder(loadedImage).generate(new Palette.PaletteAsyncListener() {
-                                                                          @Override
-                                                                          public void onGenerated(Palette palette) {
-                                                                              Palette.Swatch swatch = palette.getVibrantSwatch();
-                                                                              if (swatch != null) {
-                                                                                  primaryColor = swatch.getRgb();
-                                                                                  collapsingToolbarLayout.setContentScrimColor(primaryColor);
-                                                                                  if (getActivity() != null)
-                                                                                      ATEUtils.setStatusBarColor(getActivity(), Helpers.getATEKey(getActivity()), primaryColor);
-                                                                              } else {
-                                                                                  Palette.Swatch swatchMuted = palette.getMutedSwatch();
-                                                                                  if (swatchMuted != null) {
-                                                                                      primaryColor = swatchMuted.getRgb();
-                                                                                      collapsingToolbarLayout.setContentScrimColor(primaryColor);
-                                                                                      if (getActivity() != null)
-                                                                                          ATEUtils.setStatusBarColor(getActivity(), Helpers.getATEKey(getActivity()), primaryColor);
-                                                                                  }
-                                                                              }
+                        MaterialDrawableBuilder builder = MaterialDrawableBuilder.with(getActivity())
+                                .setIcon(MaterialDrawableBuilder.IconValue.PLAY)
+                                .setSizeDp(30);
+                        builder.setColor(Color.WHITE);
+                        ATEUtils.setFabBackgroundTint(fab, Config.accentColor(context, Helpers.getATEKey(context)));
 
-                                                                              MaterialDrawableBuilder builder = MaterialDrawableBuilder.with(getActivity())
-                                                                                      .setIcon(MaterialDrawableBuilder.IconValue.PLAY)
-                                                                                      .setSizeDp(30);
-                                                                              if (primaryColor != -1) {
-                                                                                  builder.setColor(TimberUtils.getBlackWhiteColor(primaryColor));
-                                                                                  ATEUtils.setFabBackgroundTint(fab, primaryColor);
-                                                                                  fab.setImageDrawable(builder.build());
-                                                                              } else {
-                                                                                  if (context != null) {
-                                                                                      ATEUtils.setFabBackgroundTint(fab, Config.accentColor(context, Helpers.getATEKey(context)));
-                                                                                      builder.setColor(TimberUtils.getBlackWhiteColor(Config.accentColor(context, Helpers.getATEKey(context))));
-                                                                                      fab.setImageDrawable(builder.build());
-                                                                                  }
-                                                                              }
-                                                                          }
-                                                                      }
-
-                            );
-                        } catch (
-                                Exception ignored
-                                )
-
-                        {
-
-                        }
                     }
 
                     @Override
