@@ -184,7 +184,7 @@ public class AlbumDetailFragment extends Fragment {
                     public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
                         loadFailed = true;
                         MaterialDrawableBuilder builder = MaterialDrawableBuilder.with(context)
-                                .setIcon(MaterialDrawableBuilder.IconValue.SHUFFLE)
+                                .setIcon(MaterialDrawableBuilder.IconValue.PLAY)
                                 .setColor(TimberUtils.getBlackWhiteColor(Config.accentColor(context, Helpers.getATEKey(context))));
                         ATEUtils.setFabBackgroundTint(fab, Config.accentColor(context, Helpers.getATEKey(context)));
                         fab.setImageDrawable(builder.build());
@@ -214,7 +214,7 @@ public class AlbumDetailFragment extends Fragment {
                                                                               }
 
                                                                               MaterialDrawableBuilder builder = MaterialDrawableBuilder.with(getActivity())
-                                                                                      .setIcon(MaterialDrawableBuilder.IconValue.SHUFFLE)
+                                                                                      .setIcon(MaterialDrawableBuilder.IconValue.PLAY)
                                                                                       .setSizeDp(30);
                                                                               if (primaryColor != -1) {
                                                                                   builder.setColor(TimberUtils.getBlackWhiteColor(primaryColor));
