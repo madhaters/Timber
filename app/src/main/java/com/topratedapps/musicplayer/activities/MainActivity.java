@@ -238,7 +238,7 @@ public class MainActivity extends BaseActivity implements ATEActivityThemeCustom
                             }
                         }).show();
             } else {
-                Nammu.askForPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE, permissionReadstorageCallback);
+                Nammu.askForPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE, permissionReadstorageCallback);
             }
         }
     }
