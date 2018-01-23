@@ -27,7 +27,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.graphics.Palette;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -163,31 +162,7 @@ public class ArtistDetailFragment extends Fragment {
                                 @Override
                                 public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
                                     largeImageLoaded = true;
-                                    try {
-                                        new Palette.Builder(loadedImage).generate(new Palette.PaletteAsyncListener() {
-                                            @Override
-                                            public void onGenerated(Palette palette) {
-                                                Palette.Swatch swatch = palette.getVibrantSwatch();
-                                                if (swatch != null) {
-                                                    primaryColor = swatch.getRgb();
-                                                    collapsingToolbarLayout.setContentScrimColor(primaryColor);
-                                                    if (getActivity() != null)
-                                                        ATEUtils.setStatusBarColor(getActivity(), Helpers.getATEKey(getActivity()), primaryColor);
-                                                } else {
-                                                    Palette.Swatch swatchMuted = palette.getMutedSwatch();
-                                                    if (swatchMuted != null) {
-                                                        primaryColor = swatchMuted.getRgb();
-                                                        collapsingToolbarLayout.setContentScrimColor(primaryColor);
-                                                        if (getActivity() != null)
-                                                            ATEUtils.setStatusBarColor(getActivity(), Helpers.getATEKey(getActivity()), primaryColor);
-                                                    }
-                                                }
 
-                                            }
-                                        });
-                                    } catch (Exception ignored) {
-
-                                    }
                                 }
                             });
                     Handler handler = new Handler();
@@ -224,11 +199,6 @@ public class ArtistDetailFragment extends Fragment {
     public void onResume() {
         super.onResume();
         toolbar.setBackgroundColor(Color.TRANSPARENT);
-        if (primaryColor != -1 && getActivity() != null) {
-            collapsingToolbarLayout.setContentScrimColor(primaryColor);
-            String ateKey = Helpers.getATEKey(getActivity());
-            ATEUtils.setStatusBarColor(getActivity(), ateKey, primaryColor);
-        }
 
     }
 

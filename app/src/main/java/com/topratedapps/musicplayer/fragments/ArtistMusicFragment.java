@@ -17,7 +17,7 @@ package com.topratedapps.musicplayer.fragments;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -68,7 +68,7 @@ public class ArtistMusicFragment extends Fragment {
 
 
     private void setUpSongs() {
-        songsRecyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
+        songsRecyclerview.setLayoutManager(new GridLayoutManager(getActivity(), 2));
 
         ArrayList<Album> albums;
         albums = ArtistAlbumLoader.getAlbumsForArtist(getActivity(), artistID);

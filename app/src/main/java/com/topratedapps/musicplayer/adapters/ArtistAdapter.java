@@ -16,9 +16,7 @@ package com.topratedapps.musicplayer.adapters;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.support.annotation.ColorInt;
-import android.support.v7.graphics.Palette;
 import android.support.v7.widget.RecyclerView;
 import android.util.Pair;
 import android.view.LayoutInflater;
@@ -27,7 +25,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.afollestad.appthemeengine.Config;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
@@ -39,7 +36,6 @@ import com.topratedapps.musicplayer.lastfmapi.callbacks.ArtistInfoListener;
 import com.topratedapps.musicplayer.lastfmapi.models.ArtistQuery;
 import com.topratedapps.musicplayer.lastfmapi.models.LastfmArtist;
 import com.topratedapps.musicplayer.models.Artist;
-import com.topratedapps.musicplayer.utils.Helpers;
 import com.topratedapps.musicplayer.utils.NavigationUtils;
 import com.topratedapps.musicplayer.utils.PreferencesUtility;
 import com.topratedapps.musicplayer.utils.TimberUtils;
@@ -100,36 +96,12 @@ public class ArtistAdapter extends RecyclerView.Adapter<ArtistAdapter.ItemHolder
                                         .build(), new SimpleImageLoadingListener() {
                                     @Override
                                     public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
-                                        if (isGrid && loadedImage != null) {
-                                            new Palette.Builder(loadedImage).generate(new Palette.PaletteAsyncListener() {
-                                                @Override
-                                                public void onGenerated(Palette palette) {
-                                                    int color = palette.getVibrantColor(Color.parseColor("#66000000"));
-                                                    itemHolder.footer.setBackgroundColor(color);
-                                                    Palette.Swatch swatch = palette.getVibrantSwatch();
-                                                    int textColor;
-                                                    if (swatch != null) {
-                                                        textColor = getOpaqueColor(swatch.getTitleTextColor());
-                                                    } else textColor = Color.parseColor("#ffffff");
 
-                                                    itemHolder.name.setTextColor(textColor);
-                                                    itemHolder.albums.setTextColor(textColor);
-                                                }
-                                            });
-                                        }
 
                                     }
 
                                     @Override
                                     public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
-                                        if (isGrid) {
-                                            itemHolder.footer.setBackgroundColor(0);
-                                            if (mContext != null) {
-                                                int textColorPrimary = Config.textColorPrimary(mContext, Helpers.getATEKey(mContext));
-                                                itemHolder.name.setTextColor(textColorPrimary);
-                                                itemHolder.albums.setTextColor(textColorPrimary);
-                                            }
-                                        }
                                     }
                                 });
                     } else {
