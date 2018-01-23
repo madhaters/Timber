@@ -14,6 +14,7 @@
 
 package com.topratedapps.musicplayer.fragments;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -22,6 +23,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -32,9 +34,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.afollestad.appthemeengine.Config;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
+import com.topratedapps.musicplayer.MusicPlayer;
 import com.topratedapps.musicplayer.R;
 import com.topratedapps.musicplayer.dataloaders.ArtistLoader;
 import com.topratedapps.musicplayer.lastfmapi.LastFmClient;
@@ -46,6 +50,10 @@ import com.topratedapps.musicplayer.utils.ATEUtils;
 import com.topratedapps.musicplayer.utils.Constants;
 import com.topratedapps.musicplayer.utils.Helpers;
 import com.topratedapps.musicplayer.utils.ImageUtils;
+import com.topratedapps.musicplayer.utils.NavigationUtils;
+import com.topratedapps.musicplayer.utils.TimberUtils;
+
+import net.steamcrafted.materialiconlib.MaterialDrawableBuilder;
 
 public class ArtistDetailFragment extends Fragment {
 
@@ -58,6 +66,7 @@ public class ArtistDetailFragment extends Fragment {
     AppBarLayout appBarLayout;
     boolean largeImageLoaded = false;
     int primaryColor = -1;
+    FloatingActionButton fab;
 
     public static ArtistDetailFragment newInstance(long id, boolean useTransition, String transitionName) {
         ArtistDetailFragment fragment = new ArtistDetailFragment();
@@ -94,6 +103,8 @@ public class ArtistDetailFragment extends Fragment {
         }
 
         toolbar = (Toolbar) rootView.findViewById(R.id.toolbar);
+        fab = rootView.findViewById(R.id.fab);
+        setupFab();
         setupToolbar();
         setUpArtistDetails();
 
@@ -103,6 +114,27 @@ public class ArtistDetailFragment extends Fragment {
         return rootView;
     }
 
+    private void setupFab() {
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        MusicPlayer.playArtist(getActivity(), artistID, 0, true);
+                        NavigationUtils.navigateToNowplaying(getActivity(), false);
+                    }
+                }, 150);
+            }
+        });
+        Context context = getContext();
+        MaterialDrawableBuilder builder = MaterialDrawableBuilder.with(context)
+                .setIcon(MaterialDrawableBuilder.IconValue.PLAY)
+                .setColor(TimberUtils.getBlackWhiteColor(Config.accentColor(context, Helpers.getATEKey(context))));
+        ATEUtils.setFabBackgroundTint(fab, Config.accentColor(context, Helpers.getATEKey(context)));
+        fab.setImageDrawable(builder.build());
+    }
     private void setupToolbar() {
 
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);

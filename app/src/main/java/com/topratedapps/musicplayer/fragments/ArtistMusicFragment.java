@@ -14,6 +14,7 @@
 
 package com.topratedapps.musicplayer.fragments;
 
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -23,11 +24,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.topratedapps.musicplayer.R;
-import com.topratedapps.musicplayer.adapters.ArtistSongAdapter;
-import com.topratedapps.musicplayer.dataloaders.ArtistSongLoader;
-import com.topratedapps.musicplayer.models.Song;
+import com.topratedapps.musicplayer.adapters.AlbumAdapter;
+import com.topratedapps.musicplayer.dataloaders.ArtistAlbumLoader;
+import com.topratedapps.musicplayer.models.Album;
 import com.topratedapps.musicplayer.utils.Constants;
-import com.topratedapps.musicplayer.widgets.DividerItemDecoration;
 
 import java.util.ArrayList;
 
@@ -35,7 +35,7 @@ public class ArtistMusicFragment extends Fragment {
 
     public static RecyclerView songsRecyclerview;
     long artistID = -1;
-    ArtistSongAdapter mSongAdapter;
+    AlbumAdapter mSongAdapter;
 
     public static ArtistMusicFragment newInstance(long id) {
         ArtistMusicFragment fragment = new ArtistMusicFragment();
@@ -70,16 +70,33 @@ public class ArtistMusicFragment extends Fragment {
     private void setUpSongs() {
         songsRecyclerview.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        ArrayList<Song> songList;
-        songList = ArtistSongLoader.getSongsForArtist(getActivity(), artistID);
+        ArrayList<Album> albums;
+        albums = ArtistAlbumLoader.getAlbumsForArtist(getActivity(), artistID);
 
-        // adding one dummy song to top of arraylist
-        //there will be albums header at this position in recyclerview
-        songList.add(0, new Song(-1, -1, -1, "dummy", "dummy", "dummy", -1, -1));
 
-        mSongAdapter = new ArtistSongAdapter(getActivity(), songList, artistID);
-        songsRecyclerview.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL_LIST));
+        mSongAdapter = new AlbumAdapter(getActivity(), albums);
+        int spacingInPixels = getResources().getDimensionPixelSize(R.dimen.spacing_card);
+        songsRecyclerview.addItemDecoration(new SpacesItemDecoration(spacingInPixels));
         songsRecyclerview.setAdapter(mSongAdapter);
+    }
+
+
+    public class SpacesItemDecoration extends RecyclerView.ItemDecoration {
+        private int space;
+
+        public SpacesItemDecoration(int space) {
+            this.space = space;
+        }
+
+        @Override
+        public void getItemOffsets(Rect outRect, View view,
+                                   RecyclerView parent, RecyclerView.State state) {
+
+            //the padding from left
+            outRect.left = space;
+
+
+        }
     }
 
 
