@@ -15,7 +15,6 @@
 package com.topratedapps.musicplayer.fragments;
 
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -26,8 +25,6 @@ import android.view.View;
 import com.afollestad.appthemeengine.ATE;
 import com.afollestad.appthemeengine.Config;
 import com.afollestad.appthemeengine.prefs.ATECheckBoxPreference;
-import com.afollestad.appthemeengine.prefs.ATEColorPreference;
-import com.afollestad.materialdialogs.color.ColorChooserDialog;
 import com.topratedapps.musicplayer.R;
 import com.topratedapps.musicplayer.activities.SettingsActivity;
 import com.topratedapps.musicplayer.dialogs.LastFmLoginDialog;
@@ -177,43 +174,43 @@ public class SettingsFragment extends PreferenceFragment implements SharedPrefer
     public void invalidateSettings() {
         mAteKey = ((SettingsActivity) getActivity()).getATEKey();
 
-        ATEColorPreference primaryColorPref = (ATEColorPreference) findPreference("primary_color");
-        primaryColorPref.setColor(Config.primaryColor(getActivity(), mAteKey), Color.BLACK);
-        primaryColorPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            @Override
-            public boolean onPreferenceClick(Preference preference) {
-                new ColorChooserDialog.Builder((SettingsActivity) getActivity(), R.string.primary_color)
-                        .preselect(Config.primaryColor(getActivity(), mAteKey))
-                        .show();
-                return true;
-            }
-        });
-
-        ATEColorPreference accentColorPref = (ATEColorPreference) findPreference("accent_color");
-        accentColorPref.setColor(Config.accentColor(getActivity(), mAteKey), Color.BLACK);
-        accentColorPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            @Override
-            public boolean onPreferenceClick(Preference preference) {
-                new ColorChooserDialog.Builder((SettingsActivity) getActivity(), R.string.accent_color)
-                        .preselect(Config.accentColor(getActivity(), mAteKey))
-                        .show();
-                return true;
-            }
-        });
-
-
-        findPreference("dark_theme").setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-            @Override
-            public boolean onPreferenceChange(Preference preference, Object newValue) {
-                // Marks both theme configs as changed so MainActivity restarts itself on return
-                Config.markChanged(getActivity(), "light_theme");
-                Config.markChanged(getActivity(), "dark_theme");
-                // The dark_theme preference value gets saved by Android in the default PreferenceManager.
-                // It's used in getATEKey() of both the Activities.
-                getActivity().recreate();
-                return true;
-            }
-        });
+//        ATEColorPreference primaryColorPref = (ATEColorPreference) findPreference("primary_color");
+//        primaryColorPref.setColor(Config.primaryColor(getActivity(), mAteKey), Color.BLACK);
+//        primaryColorPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+//            @Override
+//            public boolean onPreferenceClick(Preference preference) {
+//                new ColorChooserDialog.Builder((SettingsActivity) getActivity(), R.string.primary_color)
+//                        .preselect(Config.primaryColor(getActivity(), mAteKey))
+//                        .show();
+//                return true;
+//            }
+//        });
+//
+//        ATEColorPreference accentColorPref = (ATEColorPreference) findPreference("accent_color");
+//        accentColorPref.setColor(Config.accentColor(getActivity(), mAteKey), Color.BLACK);
+//        accentColorPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+//            @Override
+//            public boolean onPreferenceClick(Preference preference) {
+//                new ColorChooserDialog.Builder((SettingsActivity) getActivity(), R.string.accent_color)
+//                        .preselect(Config.accentColor(getActivity(), mAteKey))
+//                        .show();
+//                return true;
+//            }
+//        });
+//
+//
+//        findPreference("dark_theme").setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+//            @Override
+//            public boolean onPreferenceChange(Preference preference, Object newValue) {
+//                // Marks both theme configs as changed so MainActivity restarts itself on return
+//                Config.markChanged(getActivity(), "light_theme");
+//                Config.markChanged(getActivity(), "dark_theme");
+//                // The dark_theme preference value gets saved by Android in the default PreferenceManager.
+//                // It's used in getATEKey() of both the Activities.
+//                getActivity().recreate();
+//                return true;
+//            }
+//        });
 
         final ATECheckBoxPreference statusBarPref = (ATECheckBoxPreference) findPreference("colored_status_bar");
         final ATECheckBoxPreference navBarPref = (ATECheckBoxPreference) findPreference("colored_nav_bar");
