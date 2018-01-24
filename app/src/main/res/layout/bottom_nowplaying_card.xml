@@ -12,8 +12,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         ads:adSize="SMART_BANNER"
-        ads:adUnitId="ca-app-pub-4440517763038694/1480617845" />
-    <com.topratedapps.musicplayer.widgets.SquareImageView
+        ads:adUnitId="ca-app-pub-4440517763038694/9719903547" />
+
+    <com.toprated.simplemusicplayer.widgets.SquareImageView
         android:id="@+id/album_art_nowplayingcard"
         android:layout_width="55dp"
         android:layout_height="55dp"
@@ -74,7 +75,7 @@
         android:layout_below="@id/adView"
         android:layout_alignParentRight="true">
 
-        <com.topratedapps.musicplayer.widgets.PlayPauseButton
+        <com.toprated.simplemusicplayer.widgets.PlayPauseButton
             android:id="@+id/play_pause"
             android:layout_width="23dp"
             android:layout_height="23dp"

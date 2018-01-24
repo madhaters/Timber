@@ -52,7 +52,7 @@
 
         </LinearLayout>
 
-        <com.topratedapps.musicplayer.widgets.MusicVisualizer
+        <com.toprated.simplemusicplayer.widgets.MusicVisualizer
             android:id="@+id/visualizer"
             android:layout_width="30dp"
             android:layout_height="40dp"
@@ -63,7 +63,7 @@
             android:visibility="gone" />
 
 
-        <com.topratedapps.musicplayer.widgets.PopupImageView
+        <com.toprated.simplemusicplayer.widgets.PopupImageView
             android:id="@+id/popup_menu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

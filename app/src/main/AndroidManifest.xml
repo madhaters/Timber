@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.topratedapps.musicplayer">
+    package="com.toprated.simplemusicplayer">
 
     <uses-sdk tools:overrideLibrary="de.Maxr1998.trackselectorlib" />
 
@@ -14,14 +14,14 @@
     <uses-permission android:name="com.android.vending.BILLING" />
 
     <application
-        android:name="com.topratedapps.musicplayer.TimberApp"
+        android:name="com.toprated.simplemusicplayer.TimberApp"
         android:allowBackup="false"
         android:icon="@drawable/app_icon"
         android:label="@string/app_name"
         android:theme="@style/AppTheme.FullScreen.Light"
         tools:replace="android:allowBackup, android:label">
         <activity
-            android:name="com.topratedapps.musicplayer.activities.MainActivity"
+            android:name="com.toprated.simplemusicplayer.activities.MainActivity"
             android:label="Music Player ${appNameSuffix}"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -67,19 +67,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.topratedapps.musicplayer.activities.SettingsActivity"
+            android:name="com.toprated.simplemusicplayer.activities.SettingsActivity"
             android:theme="@style/AppThemeNormalLight" />
         <activity
-            android:name="com.topratedapps.musicplayer.activities.PlaylistDetailActivity"
+            android:name="com.toprated.simplemusicplayer.activities.PlaylistDetailActivity"
             android:theme="@style/AppTheme.FullScreen.Light" />
         <activity
-            android:name="com.topratedapps.musicplayer.activities.SearchActivity"
+            android:name="com.toprated.simplemusicplayer.activities.SearchActivity"
             android:theme="@style/AppThemeNormalLight" />
         <activity
-            android:name="com.topratedapps.musicplayer.activities.NowPlayingActivity"
+            android:name="com.toprated.simplemusicplayer.activities.NowPlayingActivity"
             android:theme="@style/AppTheme.FullScreen.Light" />
 
-        <receiver android:name="com.topratedapps.musicplayer.helpers.MediaButtonIntentReceiver">
+        <receiver android:name="com.toprated.simplemusicplayer.helpers.MediaButtonIntentReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.MEDIA_BUTTON" />
                 <action android:name="android.media.AUDIO_BECOMING_NOISY" />
@@ -87,11 +87,11 @@
         </receiver>
         <!-- Music service -->
         <service
-            android:name="com.topratedapps.musicplayer.MusicService"
+            android:name="com.toprated.simplemusicplayer.MusicService"
             android:label="@string/app_name"
             android:process=":main" />
         <service
-            android:name="com.topratedapps.musicplayer.WearBrowserService"
+            android:name="com.toprated.simplemusicplayer.WearBrowserService"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.media.browse.MediaBrowserService" />
@@ -99,7 +99,7 @@
         </service>
 
         <receiver
-            android:name="com.topratedapps.musicplayer.widgets.desktop.StandardWidget"
+            android:name="com.toprated.simplemusicplayer.widgets.desktop.StandardWidget"
             android:label="@string/widget_standard">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -112,7 +112,7 @@
                 android:resource="@xml/widget_standard" />
         </receiver>
         <receiver
-            android:name="com.topratedapps.musicplayer.widgets.desktop.WhiteWidget"
+            android:name="com.toprated.simplemusicplayer.widgets.desktop.WhiteWidget"
             android:label="@string/widget_white">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -125,7 +125,7 @@
                 android:resource="@xml/widget_white" />
         </receiver>
         <receiver
-            android:name="com.topratedapps.musicplayer.widgets.desktop.SmallWidget"
+            android:name="com.toprated.simplemusicplayer.widgets.desktop.SmallWidget"
             android:label="@string/widget_small">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />

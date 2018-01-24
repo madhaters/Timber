@@ -14,7 +14,7 @@
         app:cardElevation="6dp"
         android:background="?attr/selectableItemBackground">
 
-        <com.topratedapps.musicplayer.widgets.SquareImageView
+        <com.toprated.simplemusicplayer.widgets.SquareImageView
             android:id="@+id/artistImage"
             android:layout_width="match_parent"
             android:layout_height="10dp"

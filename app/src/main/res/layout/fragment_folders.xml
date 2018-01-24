@@ -32,7 +32,7 @@
         android:fadeScrollbars="true"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-    <com.topratedapps.musicplayer.widgets.FastScroller
+    <com.toprated.simplemusicplayer.widgets.FastScroller
         android:id="@+id/fastscroller"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"

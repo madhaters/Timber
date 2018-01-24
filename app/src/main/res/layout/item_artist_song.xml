@@ -67,7 +67,7 @@
             android:visibility="invisible"
             android:layout_toLeftOf="@+id/popup_menu"/>
 
-        <com.topratedapps.musicplayer.widgets.PopupImageView
+        <com.toprated.simplemusicplayer.widgets.PopupImageView
             android:id="@+id/popup_menu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

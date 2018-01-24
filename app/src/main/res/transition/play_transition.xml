@@ -5,7 +5,7 @@
     android:duration="240">
 
     <transitionSet   >
-        <transition class="com.topratedapps.musicplayer.transition.PlayTransition" />
+        <transition class="com.toprated.simplemusicplayer.transition.PlayTransition" />
         <!--<targets>-->
             <!--<target android:excludeId="@id/icon" /> />-->
         <!--</targets>-->

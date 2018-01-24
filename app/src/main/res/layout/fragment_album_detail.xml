@@ -48,7 +48,7 @@
                 android:orientation="horizontal"
                 android:visibility="gone">
 
-                <com.topratedapps.musicplayer.widgets.CircleImageView
+                <com.toprated.simplemusicplayer.widgets.CircleImageView
                     android:id="@+id/artist_art"
                     android:layout_width="50dp"
                     android:layout_height="50dp"

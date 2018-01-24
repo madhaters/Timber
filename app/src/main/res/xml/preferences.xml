@@ -2,16 +2,16 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.topratedapps.musicplayer.widgets.ThemedPreferenceCategory android:title="@string/now_playing">
+    <com.toprated.simplemusicplayer.widgets.ThemedPreferenceCategory android:title="@string/now_playing">
 
         <Preference
             android:key="now_playing_selector"
             android:summary="@string/now_playing_selector"
             android:title="@string/now_playing" />
 
-    </com.topratedapps.musicplayer.widgets.ThemedPreferenceCategory>
+    </com.toprated.simplemusicplayer.widgets.ThemedPreferenceCategory>
 
-    <com.topratedapps.musicplayer.widgets.ThemedPreferenceCategory android:title="@string/personalisation">
+    <com.toprated.simplemusicplayer.widgets.ThemedPreferenceCategory android:title="@string/personalisation">
 
         <com.afollestad.appthemeengine.prefs.ATECheckBoxPreference
             android:defaultValue="true"
@@ -80,9 +80,9 @@
             android:title="@string/colored_nav_bar"
             app:ateKey_pref_checkBox="?ate_key" />
 
-    </com.topratedapps.musicplayer.widgets.ThemedPreferenceCategory>
+    </com.toprated.simplemusicplayer.widgets.ThemedPreferenceCategory>
 
-    <com.topratedapps.musicplayer.widgets.ThemedPreferenceCategory android:title="@string/other">
+    <com.toprated.simplemusicplayer.widgets.ThemedPreferenceCategory android:title="@string/other">
 
         <com.afollestad.appthemeengine.prefs.ATEListPreference
             android:defaultValue="last_opened"
@@ -114,9 +114,9 @@
             android:title="@string/albumart_lockscreen"
             app:ateKey_pref_checkBox="?ate_key" />
 
-    </com.topratedapps.musicplayer.widgets.ThemedPreferenceCategory>
+    </com.toprated.simplemusicplayer.widgets.ThemedPreferenceCategory>
 
-    <com.topratedapps.musicplayer.widgets.ThemedPreferenceCategory android:title="LastFM">
+    <com.toprated.simplemusicplayer.widgets.ThemedPreferenceCategory android:title="LastFM">
 
         <Preference
             android:key="lastfm_login"
@@ -138,9 +138,9 @@
             android:title="@string/load_artist_image_mobile"
             app:ateKey_pref_checkBox="?ate_key" />
 
-    </com.topratedapps.musicplayer.widgets.ThemedPreferenceCategory>
+    </com.toprated.simplemusicplayer.widgets.ThemedPreferenceCategory>
 
-    <com.topratedapps.musicplayer.widgets.ThemedPreferenceCategory android:title="@string/advanced">
+    <com.toprated.simplemusicplayer.widgets.ThemedPreferenceCategory android:title="@string/advanced">
 
         <com.afollestad.appthemeengine.prefs.ATECheckBoxPreference
             android:defaultValue="false"
@@ -149,7 +149,7 @@
             android:title="@string/xposed_trackselector"
             app:ateKey_pref_checkBox="?ate_key" />
 
-    </com.topratedapps.musicplayer.widgets.ThemedPreferenceCategory>
+    </com.toprated.simplemusicplayer.widgets.ThemedPreferenceCategory>
 
 
 </PreferenceScreen>

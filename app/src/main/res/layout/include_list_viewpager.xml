@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<com.topratedapps.musicplayer.slidinguppanel.SlidingUpPanelLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.toprated.simplemusicplayer.slidinguppanel.SlidingUpPanelLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:sothree="http://schemas.android.com/apk/res-auto"
     android:id="@+id/sliding_layout"
     android:layout_width="match_parent"
@@ -22,4 +22,4 @@
         android:id="@+id/quickcontrols_container">
     </FrameLayout>
 
-</com.topratedapps.musicplayer.slidinguppanel.SlidingUpPanelLayout>
+</com.toprated.simplemusicplayer.slidinguppanel.SlidingUpPanelLayout>
