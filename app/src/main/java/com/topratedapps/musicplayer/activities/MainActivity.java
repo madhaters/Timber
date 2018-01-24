@@ -373,9 +373,9 @@ public class MainActivity extends BaseActivity implements ATEActivityThemeCustom
         if (name != null && artist != null) {
             songtitle.setText(name);
             songartist.setText(artist);
-            panelLayout.showPanel();
+            panelLayout.setPanelHeight(TimberUtils.dpToPx(100));
         } else {
-            panelLayout.hidePanel();
+            panelLayout.setPanelHeight(TimberUtils.dpToPx(50));
         }
         ImageLoader.getInstance().displayImage(TimberUtils.getAlbumArtUri(MusicPlayer.getCurrentAlbumId()).toString(), albumart,
                 new DisplayImageOptions.Builder().cacheInMemory(true)

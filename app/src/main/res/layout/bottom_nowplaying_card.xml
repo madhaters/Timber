@@ -7,10 +7,17 @@
     android:layout_gravity="top"
     android:background="?attr/windowBackground">
 
+    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        ads:adSize="SMART_BANNER"
+        ads:adUnitId="ca-app-pub-4440517763038694/1480617845" />
     <com.topratedapps.musicplayer.widgets.SquareImageView
         android:id="@+id/album_art_nowplayingcard"
         android:layout_width="55dp"
         android:layout_height="55dp"
+        android:layout_below="@id/adView"
         android:layout_alignParentLeft="true"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_empty_music2" />
@@ -19,7 +26,7 @@
         android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_below="@id/adView"
         android:layout_toRightOf="@id/album_art_nowplayingcard"
         android:orientation="vertical">
 
@@ -64,12 +71,14 @@
         android:layout_height="50dp"
         android:layout_alignParentEnd="true"
         android:layout_marginRight="5dp"
+        android:layout_below="@id/adView"
         android:layout_alignParentRight="true">
 
         <com.topratedapps.musicplayer.widgets.PlayPauseButton
             android:id="@+id/play_pause"
             android:layout_width="23dp"
             android:layout_height="23dp"
+
             android:layout_gravity="center" />
 
         <View
@@ -80,12 +89,4 @@
 
     </FrameLayout>
 
-    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/adView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        ads:adSize="BANNER"
-        ads:adUnitId="ca-app-pub-4440517763038694/1480617845" />
 </RelativeLayout>
